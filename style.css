@@ -1,0 +1,123 @@
+/* couleur du corps */
+.css-fg4pbf {
+    background-color: white !important;
+}
+/* supression de la croix pour refermer la sidebar */
+.css-ztfqz8 {
+    display: none;
+}
+/* couleur de la sidebar */
+.css-6qob1r {
+    background-color: white;
+}
+/* format du titre */
+h1 {
+    font-family: "Comic Sans MS";
+    font-size: 35px;
+}
+
+/* image en haut à gauche */
+.css-1kyxreq {
+    position:absolute;
+    bottom: 10px;
+    right: 200px;
+}
+
+/* Titre du menu */
+.css-1s3y5qe {
+    border: none;
+    display: none;
+}
+.css-vmtpwk h1 {
+    position: absolute;
+    bottom: 205px;
+    left: 90px
+}
+
+
+/* enlever la flèche pour dévellopper le menu */
+button[kind="header"] {
+    display: none;
+}
+
+/* titre des filtres */
+.titre_filtre {
+    /* display: none; */
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Comic Sans MS";
+}
+/* réduire la taille des filtres */
+.css-vmtpwk .css-16idsys p {
+    font-size: 12px;
+}
+.css-vmtpwk .css-vmtpwk {
+    padding-top: 0;
+}
+.css-vmtpwk .st-af {
+    font-size: 12px !important;
+}
+/* enlever les bords des formulaires */
+/* .css-r421ms {
+    border: none
+} */
+/* empecher la barre de scroll */
+.css-6qob1r {
+    overflow-y: hidden;
+}
+
+
+/* réduire la hauteur des text_area */
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-z5fcl4.ea3mdgi4 > div:nth-child(1) > div > div.css-r421ms.e10yg2by1 > div:nth-child(1) > div > div:nth-child(3) > div > div.css-1om1ktf.ezh4s2r0 > div > div > textarea, #root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-z5fcl4.ea3mdgi4 > div:nth-child(1) > div > div.css-r421ms.e10yg2by1 > div:nth-child(1) > div > div:nth-child(2) > div > div.css-1om1ktf.ezh4s2r0 > div > div > textarea, #root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-z5fcl4.ea3mdgi4 > div:nth-child(1) > div > div.css-r421ms.e10yg2by1 > div:nth-child(1) > div > div:nth-child(1) > div > div.css-1om1ktf.ezh4s2r0 > div > div > textarea, #root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-1y4p8pa.ea3mdgi4 > div:nth-child(1) > div > div.css-r421ms.e10yg2by1 > div:nth-child(1) > div > div:nth-child(1) > div > div.css-1om1ktf.ezh4s2r0 > div > div > textarea, #root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-1y4p8pa.ea3mdgi4 > div:nth-child(1) > div > div.css-r421ms.e10yg2by1 > div:nth-child(1) > div > div:nth-child(2) > div > div.css-1om1ktf.ezh4s2r0 > div > div > textarea, #root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-1y4p8pa.ea3mdgi4 > div:nth-child(1) > div > div.css-r421ms.e10yg2by1 > div:nth-child(1) > div > div:nth-child(3) > div > div.css-1om1ktf.ezh4s2r0 > div > div > textarea {
+    height: 50px !important;
+    min-height: fit-content;
+    overflow-y: hidden;
+}
+
+.css-m8hsoe, .css-1oe5cao {
+    max-height: none !important;
+    height: auto;
+}
+
+
+/* agrandir le KPI */
+code {
+    text-align: center;
+    position: absolute;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+    color: rgb(0, 0, 0);
+    font-family: 'Comic Sans MS';
+    background-color: white;
+    font-size: 80px;
+
+}
+
+/* footer */
+div.block-container.css-1y4p8pa.ea3mdgi4 > div:nth-child(1) > div > div:nth-child(6), div.block-container.css-z5fcl4.ea3mdgi4 > div:nth-child(1) > div > div:nth-child(6) {
+    text-align: center;
+    position: relative;
+    top: 150px;
+}
+footer {
+    display: none;
+}
+.link {
+    text-align: center;
+}
+
+/* enlever les rgpd et mentions légales de la sidebar */
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-vk3wp9.eczjsme11 > div.css-6qob1r.eczjsme3 > div.css-79elbk.eczjsme10 > ul > li:nth-child(6) {
+    display: none;
+}
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-vk3wp9.eczjsme11 > div.css-6qob1r.eczjsme3 > div.css-79elbk.eczjsme10 > ul > li:nth-child(7) {
+    display: none;
+}
+
+
+/* enlever les settings */
+#bui1 > div > div > ul:nth-child(1) > ul:nth-child(2) {
+    display: none;
+}

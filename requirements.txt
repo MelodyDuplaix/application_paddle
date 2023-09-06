@@ -4,6 +4,4 @@ st_pages
 datetime
 plotly
 numpy
-sqlite3
-datetime
 PIL

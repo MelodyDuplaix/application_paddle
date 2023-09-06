@@ -1,6 +1,5 @@
 streamlit
 pandas
-bibliotheque
 st_pages
 datetime
 plotly

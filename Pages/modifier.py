@@ -78,7 +78,7 @@ with st.form("Formulaire d'ajout", clear_on_submit=False):
         cursor = connexion.cursor()
         date_de_naissance_str = date_de_naissance.strftime("%Y-%m-%d")
         date_arrive_str = date_arrive.strftime("%Y-%m-%d")
-        reponse = [prenom.capitalize(), nom.upper(), mail, genre, date_de_naissance_str, date_arrive_str, int(localisation_id), date_sortie_str,  int(id)]
+        reponse = [prenom.capitalize(), nom.upper(), mail, genre, date_de_naissance_str, date_arrive_str, int(localisation_id), date_sortie,  int(id)]
         # Exécutez la commande SQL UPDATE pour mettre à jour la ligne
         try:
             cursor.execute(""" UPDATE salaries

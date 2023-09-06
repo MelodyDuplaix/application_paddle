@@ -69,6 +69,8 @@ with st.form("Formulaire d'ajout", clear_on_submit=False):
     date_sortie = st.date_input("Date de sortie", format="YYYY.MM.DD", value=datetime.date((today.year+100), 1, 1), min_value= datetime.date((today.year-60), 1, 1), help="Veuillez laissez la date  " + datetime.date((today.year+100), 1, 1).strftime("%Y-%m-%d") + "  si la date est nulle")
     if date_sortie == datetime.date((today.year+100), 1, 1):
         date_sortie = ""
+    else:
+        date_sortie = date_sortie.strftime("%Y-%m-%d")
     
     envoie = st.form_submit_button("Envoyer")
     if envoie:
@@ -76,7 +78,6 @@ with st.form("Formulaire d'ajout", clear_on_submit=False):
         cursor = connexion.cursor()
         date_de_naissance_str = date_de_naissance.strftime("%Y-%m-%d")
         date_arrive_str = date_arrive.strftime("%Y-%m-%d")
-        date_sortie_str = date_sortie.strftime("%Y-%m-%d")
         reponse = [prenom.capitalize(), nom.upper(), mail, genre, date_de_naissance_str, date_arrive_str, int(localisation_id), date_sortie_str,  int(id)]
         # Exécutez la commande SQL UPDATE pour mettre à jour la ligne
         try:

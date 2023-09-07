@@ -50,6 +50,6 @@ dataset = dataset[dataset["genre"].isin(genre)]
 # filtre des villes
 dataset = dataset[dataset["nom_ville"].isin(villes)]
 
-st.dataframe(dataset, hide_index=True, width=14000)
+st.dataframe(dataset, hide_index=True, width=14000, column_config=dictionnaire_des_colonnes())
 
 footer()

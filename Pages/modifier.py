@@ -13,7 +13,7 @@ sidebar()
 
 
 # titre, contexte et logos
-header("Tableau de modification des salariés","")
+header("Formulaire de modification des salariés","")
 
 
 
@@ -68,22 +68,10 @@ with st.form("Formulaire d'ajout", clear_on_submit=False):
     
     envoie = st.form_submit_button("Envoyer")
     if envoie:
-        connexion = sqlite3.connect("data/personnel_societe_paddle")
-        cursor = connexion.cursor()
         date_de_naissance_str = date_de_naissance.strftime("%Y-%m-%d")
         date_arrive_str = date_arrive.strftime("%Y-%m-%d")
         reponse = [prenom.capitalize(), nom.upper(), mail, genre, date_de_naissance_str, date_arrive_str, int(localisation_id), date_sortie,  int(id)]
-        # Exécutez la commande SQL UPDATE pour mettre à jour la ligne
-        try:
-            cursor.execute(""" UPDATE salaries
-            SET prenom = ?, nom_sa = ?, mail = ?, genre = ?, date_naissance = ?, date_arrivee = ?, id_ville = ?, date_sortie = ?
-            WHERE id_salarie = ?;
-        """, reponse)
-        except sqlite3.IntegrityError as e:
-            st.write(e)
-        connexion.commit()
-        connexion.close()
-        st.write("Les données ont bien été mises à jour")
+        envoi_des_donnees_modification(reponse)
 
 
 footer()

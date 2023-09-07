@@ -107,6 +107,7 @@ footer {
     text-align: center;
 }
 
+
 /* enlever les rgpd et mentions légales de la sidebar */
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-vk3wp9.eczjsme11 > div.css-6qob1r.eczjsme3 > div.css-79elbk.eczjsme10 > ul > li:nth-child(6) {
     display: none;

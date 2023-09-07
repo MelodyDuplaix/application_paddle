@@ -61,6 +61,7 @@ def calcul_ages():
     today = datetime.now()
     dataset["age"]=today - dataset["date_naissance"]
     dataset["age"] = dataset["age"] / pd.Timedelta(days=365)
+    dataset["date_naissance"] = dataset["date_naissance"].astype(str)
     return(dataset)
     
 def groupement_ages():
@@ -371,3 +372,39 @@ def envoi_suppresion_donnee(dataset, individu):
     connexion.commit()
     connexion.close()
     st.write("Les données ont bien été supprimées")
+    
+def envoi_des_donnees_modification(reponse):
+    connexion = sqlite3.connect("data/personnel_societe_paddle")
+    cursor = connexion.cursor()
+    # Exécutez la commande SQL UPDATE pour mettre à jour la ligne
+    try:
+        cursor.execute(""" UPDATE salaries
+        SET prenom = ?, nom_sa = ?, mail = ?, genre = ?, date_naissance = ?, date_arrivee = ?, id_ville = ?, date_sortie = ?
+        WHERE id_salarie = ?;
+    """, reponse)
+    except sqlite3.IntegrityError as e:
+        st.write(e)
+    connexion.commit()
+    connexion.close()
+    st.write("Les données ont bien été mises à jour")
+    
+def dictionnaire_des_colonnes():
+    dictionnaire = {
+    "id":"id",
+    "prenom":"prenom",
+    "nom_sa":"nom",
+    "mail":"mail",
+    "genre":"genre",
+    "date_naissance":st.column_config.DateColumn(
+        "date de naissance", format="DD/MM/YYYY"
+        ),
+    "date_arrivee":st.column_config.DateColumn(
+        "date d'arrivée", format="DD/MM/YYYY"
+        ),
+    "date_sortie":st.column_config.DateColumn(
+        "date de sortie", format="DD/MM/YYYY"
+        ),
+    "nom_ville":"ville de travail",
+    "age":"age"
+    }
+    return dictionnaire

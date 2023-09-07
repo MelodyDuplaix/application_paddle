@@ -6,9 +6,7 @@ from st_pages import Page, show_pages, add_page_title
 
 config_site("centered")
 sidebar()
-header_avec_image("Récapitulatif des salariés", "")
-
-
+header_avec_image("Récapitulatif des salariés", "Application de gestion des salariés au sein de l'entreprise paddle vente")
 
 
 # Code principal

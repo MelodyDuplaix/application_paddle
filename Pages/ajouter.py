@@ -43,9 +43,7 @@ with st.form("Formulaire d'ajout", clear_on_submit=True):
     )
     
     liste_ville = récupérer_liste_ville()
-    
     localisation = st.selectbox("Ville",liste_ville, key="localisation")
-    
     
     submitted = st.form_submit_button("Envoyer")
     if submitted and prenom and nom and mail:

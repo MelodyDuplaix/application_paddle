@@ -127,3 +127,10 @@ div[data-testid="stSidebarNav"] {
     border-style: solid;
     border-radius: 6px;
 }
+
+
+/* boutton reset */
+
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-vk3wp9.eczjsme11 > div.css-6qob1r.eczjsme3 > div.css-vmtpwk.eczjsme4 > div > div:nth-child(1) > div > div:nth-child(6) {
+    text-align: center;
+}

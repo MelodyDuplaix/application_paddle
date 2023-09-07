@@ -42,19 +42,7 @@ if submitted:
 confirmation_suppression = st.checkbox("Confirmer la suppression")
 
 if confirmation_suppression:
-    dataset_id = dataset[dataset["identifiant"].isin(individu)]
-    ids = dataset_id["id"].to_list()
-    connexion = sqlite3.connect("data/personnel_societe_paddle")
-    cursor = connexion.cursor()
-    for id in ids:
-        try:
-            cursor.execute(f"DELETE FROM salaries WHERE id_salarie = '{id}';")
-        except sqlite3.IntegrityError as e:
-            st.write(e)
-    connexion.commit()
-    connexion.close()
-    st.write("Les données ont bien été supprimées")
-
+    envoi_suppresion_donnee(dataset, individu)
 
 footer()
 

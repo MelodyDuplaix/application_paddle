@@ -58,14 +58,8 @@ with st.form("Formulaire d'ajout", clear_on_submit=False):
         format="DD/MM/YYYY", key="date_arrive", value=date_entree
     )
     
-    liste_ville = récupérer_liste_ville()
-    liste_ville_update = liste_ville.copy()
-    liste_ville_update.remove(ligne_individu["nom_ville"].values[0])
-    liste_ville_update.insert(0, ligne_individu["nom_ville"].values[0])
-    localisation = st.selectbox("Ville",liste_ville_update, key="localisation")
-    table_ville = récupérer_tableau_ville()
-    localisation_id = table_ville[table_ville["nom"]==localisation]["id"].values
-
+    localisation_id = récupérer_la_ville(ligne_individu)
+    
     date_sortie = st.date_input("Date de sortie", format="DD/MM/YYYY", value=datetime.date(2100, 1, 1), min_value= datetime.date((today.year-60), 1, 1), help="Veuillez laissez la date  " + datetime.date(2100, 1, 1).strftime("%Y-%m-%d") + "  si la date est nulle")
     if date_sortie == datetime.date(2100, 1, 1):
         date_sortie = None

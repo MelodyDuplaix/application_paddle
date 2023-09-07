@@ -15,7 +15,6 @@ sidebar()
 # titre, contexte et logos
 header("Formulaire d'ajout d'un salarié","")
 
-
 # Code principal
 
 st.info(body="Tous les champs sont obligatoires.", icon="❗")
@@ -50,21 +49,10 @@ with st.form("Formulaire d'ajout", clear_on_submit=True):
     
     submitted = st.form_submit_button("Envoyer")
     if submitted and prenom and nom and mail:
-        connexion = sqlite3.connect("data/personnel_societe_paddle")
-        cursor = connexion.cursor()
         id_ville = liste_ville.index(localisation)+1
         date_naissance = datetime.datetime.strptime(str(date_de_naissance),"%Y-%m-%d")
         reponse = [prenom.capitalize(), nom.upper(), mail, genre, date_de_naissance, date_arrive, id_ville]
-        try : 
-            cursor.execute("INSERT INTO salaries('prenom','nom_sa', 'mail', 'genre', 'date_naissance', 'date_arrivee', 'id_ville') VALUES(?,?,?,?,?,?,?)", reponse)
-        except sqlite3.IntegrityError as e:
-            st.write(e)
-        connexion.commit()
-        connexion.close()
-        st.write("Les données ont bien été envoyé")
+        envoi_des_donnes_ajout(reponse)
 
 
-
-    
-    
 footer()

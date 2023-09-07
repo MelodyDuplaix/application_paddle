@@ -179,7 +179,6 @@ def graph_villes(f_dataset_villes):
     graph_ville.update_traces(hovertemplate="%{label} : %{value}")
     return(graph_ville)
 
-@st.cache_data
 def récupération_dataset_total():
     """
     Nom : récupération_dataset_total
@@ -201,6 +200,7 @@ def récupération_dataset_total():
     connexion.close()
     return(dataset)
 
+@st.cache_data
 def récupérer_liste_ville():
     """
     Nom : récupérer_liste_ville
@@ -258,6 +258,7 @@ def sidebar():
     )
     st.sidebar.title("Menu")
 
+@st.cache_data
 def header_avec_image(f_titre, f_contexte):
     """
     Nom : header_avec_image
@@ -275,6 +276,7 @@ def header_avec_image(f_titre, f_contexte):
     st.write(f_contexte)
     st.write()
 
+@st.cache_data
 def header(f_titre, f_contexte):
     """
     Nom : header
@@ -290,6 +292,7 @@ def header(f_titre, f_contexte):
     st.write(f_contexte)
     st.write()
 
+@st.cache_data
 def formatage_de_la_page(f_fichier_css):
     """
     Nom : formatage_de_la_page
@@ -334,5 +337,37 @@ def footer():
     with col2:
         st.write(footer2, unsafe_allow_html=True)
   
-  
+def envoi_des_donnes_ajout(reponse):
+    connexion = sqlite3.connect("data/personnel_societe_paddle")
+    cursor = connexion.cursor()
+    try : 
+        cursor.execute("INSERT INTO salaries('prenom','nom_sa', 'mail', 'genre', 'date_naissance', 'date_arrivee', 'id_ville') VALUES(?,?,?,?,?,?,?)", reponse)
+    except sqlite3.IntegrityError as e:
+        st.write(e)
+    connexion.commit()
+    connexion.close()
+    st.write("Les données ont bien été envoyé")  
 
+def récupérer_la_ville(ligne_individu):
+    liste_ville = récupérer_liste_ville()
+    liste_ville_update = liste_ville.copy()
+    liste_ville_update.remove(ligne_individu["nom_ville"].values[0])
+    liste_ville_update.insert(0, ligne_individu["nom_ville"].values[0])
+    localisation = st.selectbox("Ville",liste_ville_update, key="localisation")
+    table_ville = récupérer_tableau_ville()
+    localisation_id = table_ville[table_ville["nom"]==localisation]["id"].values
+    return(localisation_id)
+
+def envoi_suppresion_donnee(dataset, individu):
+    dataset_id = dataset[dataset["identifiant"].isin(individu)]
+    ids = dataset_id["id"].to_list()
+    connexion = sqlite3.connect("data/personnel_societe_paddle")
+    cursor = connexion.cursor()
+    for id in ids:
+        try:
+            cursor.execute(f"DELETE FROM salaries WHERE id_salarie = '{id}';")
+        except sqlite3.IntegrityError as e:
+            st.write(e)
+    connexion.commit()
+    connexion.close()
+    st.write("Les données ont bien été supprimées")

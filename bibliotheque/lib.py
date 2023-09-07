@@ -14,6 +14,7 @@ from PIL import Image
 
 # Définition des fonctions
 
+
 def creation_base_et_table():
     """
     Nom : creation_base_et_table
@@ -172,6 +173,7 @@ def graph_villes(f_dataset_villes):
     graph_ville.update_traces(hovertemplate="%{label} : %{value}")
     return(graph_ville)
 
+@st.cache_data
 def récupération_dataset_total():
     """
     Nom : récupération_dataset_total
@@ -211,6 +213,7 @@ def récupérer_liste_ville():
     connexion.close()
     return(liste_villes)
 
+@st.cache_data
 def récupérer_tableau_ville():
     """
     Nom : récupérer_liste_ville
@@ -220,11 +223,11 @@ def récupérer_tableau_ville():
     """
     connexion = sqlite3.connect("data/personnel_societe_paddle")
     cursor = connexion.cursor()
-    TABLE_TOTAL = """ 
+    TABLE_VILLE_TOTAL = """ 
                     SELECT *
                     FROM villes;
                 """
-    cursor.execute(TABLE_TOTAL)
+    cursor.execute(TABLE_VILLE_TOTAL)
     liste_villes = pd.DataFrame(cursor.fetchall(), columns=["id","nom"])
     connexion.close()
     return(liste_villes)
@@ -309,6 +312,7 @@ def config_site(f_layout):
     )
     formatage_de_la_page("style.css")
 
+@st.cache_data
 def footer():
     """
     Nom : footer

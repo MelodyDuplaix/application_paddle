@@ -94,11 +94,12 @@ code {
 }
 
 /* footer */
-div.block-container.css-1y4p8pa.ea3mdgi4 > div:nth-child(1) > div > div:nth-child(6), div.block-container.css-z5fcl4.ea3mdgi4 > div:nth-child(1) > div > div:nth-child(6) {
+#root > div:nth-child(1) > div.withScreencast > div > div > div > section.main.css-uf99v8.ea3mdgi5 > div.block-container.css-1y4p8pa.ea3mdgi4 > div:nth-child(1) > div > div:nth-child(8) {
     text-align: center;
     position: relative;
     top: 150px;
 }
+
 footer {
     display: none;
 }
@@ -133,4 +134,9 @@ div[data-testid="stSidebarNav"] {
 
 #root > div:nth-child(1) > div.withScreencast > div > div > div > section.css-vk3wp9.eczjsme11 > div.css-6qob1r.eczjsme3 > div.css-vmtpwk.eczjsme4 > div > div:nth-child(1) > div > div:nth-child(6) {
     text-align: center;
+}
+
+/* Correction de l'affichage de la table avec @st.cache_data */
+.stHidden {
+    display: none !important;
 }

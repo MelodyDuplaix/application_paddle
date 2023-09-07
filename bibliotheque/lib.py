@@ -84,7 +84,13 @@ def graph_age(f_dataset_age):
     Traitement : construit le graphique du nombre par tranches d'âges
     Retour : un graphique
     """
-    graph_tranche_age = px.pie(f_dataset_age, names="tranche_age", values="nombre", color_discrete_sequence=px.colors.sequential.Blues_r)
+    graph_tranche_age = px.pie(f_dataset_age, names="tranche_age", values="nombre", color="tranche_age", color_discrete_map={
+        '60+':'#004484',
+        '50-60':'#005fb8',
+        '40-49':'#0072de',
+        '30-39':'#5db1ff',
+        '17-29':'#c3e2ff'
+    },category_orders={"tranche_age":["17-29","30-39","40-49","50-60","60+"]})
     graph_tranche_age.update_traces(hovertemplate="%{label} : %{value}")
     return(graph_tranche_age)
 

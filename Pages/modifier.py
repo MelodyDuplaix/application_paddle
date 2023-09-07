@@ -66,9 +66,9 @@ with st.form("Formulaire d'ajout", clear_on_submit=False):
     table_ville = récupérer_tableau_ville()
     localisation_id = table_ville[table_ville["nom"]==localisation]["id"].values
 
-    date_sortie = st.date_input("Date de sortie", format="YYYY.MM.DD", value=datetime.date((today.year+100), 1, 1), min_value= datetime.date((today.year-60), 1, 1), help="Veuillez laissez la date  " + datetime.date((today.year+100), 1, 1).strftime("%Y-%m-%d") + "  si la date est nulle")
-    if date_sortie == datetime.date((today.year+100), 1, 1):
-        date_sortie = ""
+    date_sortie = st.date_input("Date de sortie", format="YYYY.MM.DD", value=datetime.date(2100, 1, 1), min_value= datetime.date((today.year-60), 1, 1), help="Veuillez laissez la date  " + datetime.date(2100, 1, 1).strftime("%Y-%m-%d") + "  si la date est nulle")
+    if date_sortie == datetime.date(2100, 1, 1):
+        date_sortie = None
     else:
         date_sortie = date_sortie.strftime("%Y-%m-%d")
     

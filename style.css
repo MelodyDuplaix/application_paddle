@@ -30,8 +30,8 @@ h1 {
 }
 .css-vmtpwk h1 {
     position: absolute;
-    bottom: 205px;
-    left: 90px
+    bottom: 230px;
+    left: 75px
 }
 
 
@@ -58,10 +58,8 @@ button[kind="header"] {
 .css-vmtpwk .st-af {
     font-size: 12px !important;
 }
-/* enlever les bords des formulaires */
-/* .css-r421ms {
-    border: none
-} */
+
+
 /* empecher la barre de scroll */
 .css-6qob1r {
     overflow-y: hidden;
@@ -120,4 +118,12 @@ footer {
 /* enlever les settings */
 #bui1 > div > div > ul:nth-child(1) > ul:nth-child(2) {
     display: none;
+}
+
+/* bordure du menu */
+div[data-testid="stSidebarNav"] {
+    border-color: #06aaaa;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 6px;
 }

@@ -149,3 +149,10 @@ div[data-testid="stSidebarNav"] {
 .stHidden {
     display: none !important;
 }
+.css-tvhsbf .glideDataEditor {
+    overflow-y: visible;
+    min-height: auto;
+    max-height: none;
+    height: 
+
+}

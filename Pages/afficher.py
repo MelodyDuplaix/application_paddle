@@ -49,7 +49,7 @@ dataset = dataset[dataset["genre"].isin(genre)]
 
 # filtre des villes
 dataset = dataset[dataset["nom_ville"].isin(villes)]
-
-st.dataframe(dataset, hide_index=True, width=14000, column_config=dictionnaire_des_colonnes())
+nombre_lignes = dataset["id"].count()
+st.dataframe(dataset, hide_index=True, height= (nombre_lignes + 1) * 35 + 3, width=14000, column_config=dictionnaire_des_colonnes())
 
 footer()

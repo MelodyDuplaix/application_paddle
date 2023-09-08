@@ -312,7 +312,7 @@ def config_site(f_layout):
     Retour : un affichage
     """
     st.set_page_config(
-        page_title="Analyse associations",
+        page_title="PaddlePersonnel",
         page_icon="📊",
         layout=f_layout,
         menu_items={

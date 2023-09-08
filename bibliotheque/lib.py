@@ -330,13 +330,18 @@ def footer():
     Traitement : crée un footer avec les deux liens vers RGPD et mentions légales
     Retour : un affichage
     """
-    footer1 = "<a href='Mentions Légales' target='_self' class='link' text-align='center'>Mentions légales</a> " 
-    footer2 = "<a href='RGPD' target= '_self' class='link' text-align='center'>RGPD</a> "
-    col1, col2 = st.columns(2)
-    with col1:
-        st.write(footer1, unsafe_allow_html=True)
-    with col2:
-        st.write(footer2, unsafe_allow_html=True)
+    texte = """
+    <div class=footer>
+        <a href='Mentions Légales' target='_self' class='link'>Mentions légales</a> 
+        <a href='RGPD' target= '_self' class='link'>RGPD</a> 
+    </div>
+    """
+    st.markdown(texte, unsafe_allow_html=True)
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.write(footer1, unsafe_allow_html=True)
+    # with col2:
+    #     st.write(footer2, unsafe_allow_html=True)
   
 def envoi_des_donnes_ajout(f_reponse_ajout):
     """

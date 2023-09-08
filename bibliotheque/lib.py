@@ -338,29 +338,47 @@ def footer():
     with col2:
         st.write(footer2, unsafe_allow_html=True)
   
-def envoi_des_donnes_ajout(reponse):
+def envoi_des_donnes_ajout(f_reponse_ajout):
+    """
+    Nom : envoi_des_donnes_ajout
+    Paramètres : 1, liste de chaine de caractères
+    Traitement : envoie les données et les rajoute à la table salariés
+    Retour : un affichage
+    """
     connexion = sqlite3.connect("data/personnel_societe_paddle")
     cursor = connexion.cursor()
     try : 
-        cursor.execute("INSERT INTO salaries('prenom','nom_sa', 'mail', 'genre', 'date_naissance', 'date_arrivee', 'id_ville') VALUES(?,?,?,?,?,?,?)", reponse)
+        cursor.execute("INSERT INTO salaries('prenom','nom_sa', 'mail', 'genre', 'date_naissance', 'date_arrivee', 'id_ville') VALUES(?,?,?,?,?,?,?)", f_reponse_ajout)
     except sqlite3.IntegrityError as e:
         st.write(e)
     connexion.commit()
     connexion.close()
     st.write("Les données ont bien été envoyé")  
 
-def récupérer_la_ville(ligne_individu):
+def récupérer_la_ville(f_ligne_individu):
+    """
+    Nom : récupérer_la_ville
+    Paramètres : 1, serie pandas
+    Traitement : affiche un sélécteur de ville et va chercher l'id dans la table ville
+    Retour : un affichage
+    """
     liste_ville = récupérer_liste_ville()
     liste_ville_update = liste_ville.copy()
-    liste_ville_update.remove(ligne_individu["nom_ville"].values[0])
-    liste_ville_update.insert(0, ligne_individu["nom_ville"].values[0])
+    liste_ville_update.remove(f_ligne_individu["nom_ville"].values[0])
+    liste_ville_update.insert(0, f_ligne_individu["nom_ville"].values[0])
     localisation = st.selectbox("Ville",liste_ville_update, key="localisation")
     table_ville = récupérer_tableau_ville()
     localisation_id = table_ville[table_ville["nom"]==localisation]["id"].values
     return(localisation_id)
 
-def envoi_suppresion_donnee(dataset, individu):
-    dataset_id = dataset[dataset["identifiant"].isin(individu)]
+def envoi_suppresion_donnee(f_dataset_suppresion, f_individu):
+    """
+    Nom : envoi_suppresion_donnee
+    Paramètres : 2, 1-dataFrame, 2-liste de chaine de caractère
+    Traitement : récupère l'identifiant selon les nom choisis et supprime les lignes des noms choisis dans la table
+    Retour : un affichage
+    """
+    dataset_id = f_dataset_suppresion[f_dataset_suppresion["identifiant"].isin(f_individu)]
     ids = dataset_id["id"].to_list()
     connexion = sqlite3.connect("data/personnel_societe_paddle")
     cursor = connexion.cursor()
@@ -373,7 +391,13 @@ def envoi_suppresion_donnee(dataset, individu):
     connexion.close()
     st.write("Les données ont bien été supprimées")
     
-def envoi_des_donnees_modification(reponse):
+def envoi_des_donnees_modification(f_reponse_modification):
+    """
+    Nom : envoi_des_donnees_modification
+    Paramètres : 1, liste de chaine de caractères
+    Traitement : met à jour la table salariés selon la réponse
+    Retour : un affichage
+    """
     connexion = sqlite3.connect("data/personnel_societe_paddle")
     cursor = connexion.cursor()
     # Exécutez la commande SQL UPDATE pour mettre à jour la ligne
@@ -381,7 +405,7 @@ def envoi_des_donnees_modification(reponse):
         cursor.execute(""" UPDATE salaries
         SET prenom = ?, nom_sa = ?, mail = ?, genre = ?, date_naissance = ?, date_arrivee = ?, id_ville = ?, date_sortie = ?
         WHERE id_salarie = ?;
-    """, reponse)
+    """, f_reponse_modification)
     except sqlite3.IntegrityError as e:
         st.write(e)
     connexion.commit()
@@ -389,6 +413,12 @@ def envoi_des_donnees_modification(reponse):
     st.write("Les données ont bien été mises à jour")
     
 def dictionnaire_des_colonnes():
+    """
+    Nom : dictionnaire_des_colonnes
+    Paramètres : 0
+    Traitement : créer un dictionnaire avec les configurations des colonnes
+    Retour : un dictionnaire
+    """
     dictionnaire = {
     "id":"id",
     "prenom":"prenom",

@@ -46,7 +46,7 @@ confirmation_suppression = st.checkbox("Confirmer la suppression")
 if confirmation_suppression and not dataset[dataset["identifiant"].isin(individu)]["id"].isin([1]).any():
     envoi_suppresion_donnee(dataset, individu)
 if dataset[dataset["identifiant"].isin(individu)]["id"].isin([1]).any():
-    st.write("Il est hors de question de supprimer Lyly !!")
+    st.write("On vas pas virer la directrice quand même !!")
     
 
 footer()

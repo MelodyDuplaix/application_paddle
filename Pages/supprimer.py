@@ -28,6 +28,7 @@ liste_nom = dataset["identifiant"].to_list()
 
 # Création du choix
 
+dataset_id = pd.DataFrame()
 with st.form("suppression", clear_on_submit=True):
     individu = st.multiselect("Salariés à supprimer", options=liste_nom)
 
@@ -39,10 +40,14 @@ if submitted:
     st.write(dataset_id)
 
 # Utilisez un widget st.checkbox pour confirmer la suppression
+
 confirmation_suppression = st.checkbox("Confirmer la suppression")
 
-if confirmation_suppression:
+if confirmation_suppression and not dataset[dataset["identifiant"].isin(individu)]["id"].isin([1]).any():
     envoi_suppresion_donnee(dataset, individu)
+if dataset[dataset["identifiant"].isin(individu)]["id"].isin([1]).any():
+    st.write("Il est hors de question de supprimer Lyly !!")
+    
 
 footer()
 
